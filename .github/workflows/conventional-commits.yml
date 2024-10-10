@@ -2,9 +2,9 @@ name: Conventional Commits
 
 on:
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, master ]
   push:
-    branches: [ main, develop ]
+    branches: [ main, master ]
 
 jobs:
   check-commit-message:
@@ -12,18 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
 
       - name: Install commitlint
         run: |
-          npm install @commitlint/cli @commitlint/config-conventional
+          npm install @commitlint/cli@17.6.5 @commitlint/config-conventional@17.6.5
 
       - name: Create commitlint config file
         run: |

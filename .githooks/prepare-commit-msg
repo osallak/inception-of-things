@@ -1,0 +1,37 @@
+#!/bin/bash
+
+commit_msg_file="$1"
+commit_source="$2"
+
+# Skip for merge commits, commits with a message, or when rebasing
+if [ "$commit_source" = "merge" ] || [ "$commit_source" = "message" ] || [ -n "$REBASING" ]; then
+    exit 0
+fi
+
+echo "Select the type of change you're committing:"
+options=("feat" "fix" "docs" "style" "refactor" "perf" "test" "build" "ci" "chore" "revert")
+
+select opt in "${options[@]}"
+do
+    case $opt in
+        *)
+            if [[ " ${options[*]} " =~ " ${opt} " ]]; then
+                break
+            else
+                echo "Invalid option. Please try again."
+            fi
+            ;;
+    esac
+done
+
+read -p "Enter the scope (optional, press enter to skip): " scope
+read -p "Enter a short description: " description
+
+if [ -n "$scope" ]; then
+    echo "$opt($scope): $description" > "$commit_msg_file"
+else
+    echo "$opt: $description" > "$commit_msg_file"
+fi
+
+echo "" >> "$commit_msg_file"
+echo "# Write a more detailed description here, if necessary." >> "$commit_msg_file"

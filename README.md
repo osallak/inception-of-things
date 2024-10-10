@@ -63,3 +63,10 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgments
 
 Special thanks to the instructors and resources that have provided guidance throughout this project.
+
+## Commit Message Convention
+
+This project uses the Conventional Commits specification. Please run the following command after cloning the repository to set up the commit message hooks:
+
+```bash
+./setup_git_hooks.sh

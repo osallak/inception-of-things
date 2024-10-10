@@ -37,7 +37,7 @@ To get started with the project, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your_username/inception-of-things.git
+   git clone https://github.com/osallak/inception-of-things.git
    cd inception-of-things
    ```
 
